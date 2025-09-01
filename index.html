@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MJKart — Your Everything Store</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Top strip -->
+  <div class="top-strip">
+    <div class="container">
+      <span>🤝 Welcome to <strong>MJKart</strong> — Free delivery on orders over ₹499 • 24×7 Support</span>
+      <span class="top-links">
+        <a href="#" id="helpLink">Help</a>
+        <a href="#" id="ordersLink">Orders</a>
+        <a href="#" id="wishlistLink">Wishlist</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand" id="homeLink">
+        <div class="brand-logo">MJ</div>
+        <div class="brand-text">
+          <div class="brand-title">MJKart</div>
+          <div class="brand-tag">Your Everything Store</div>
+        </div>
+      </div>
+
+      <div class="searchbar">
+        <input id="searchInput" type="text" placeholder="Search for products, brands and more..." aria-label="Search">
+        <button id="searchBtn" aria-label="Search Button">Search</button>
+      </div>
+
+      <nav class="header-actions">
+        <button class="ghost" id="loginBtn">Sign In</button>
+        <button class="ghost" id="sellerBtn">Become a Seller</button>
+        <button class="cart-btn" id="cartBtn" aria-label="Open Cart">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-label">Cart</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Category bar -->
+    <div class="category-bar">
+      <div class="container" id="categoryBar">
+        <!-- Dynamic category pills -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner carousel -->
+  <section class="banner">
+    <div class="container">
+      <div class="carousel" id="carousel">
+        <!-- Slides injected via JS -->
+        <button class="carousel-nav prev" id="carouselPrev" aria-label="Prev">‹</button>
+        <button class="carousel-nav next" id="carouselNext" aria-label="Next">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main -->
+  <main class="container main">
+    <aside class="filters" id="filters">
+      <div class="filter-head">
+        <h3>Filters</h3>
+        <button id="clearFilters" class="link">Clear All</button>
+      </div>
+
+      <div class="filter-section">
+        <h4>Price</h4>
+        <div class="range">
+          <input type="range" id="minPrice" min="0" max="200000" step="500">
+          <label>Min: ₹<span id="minPriceLabel">0</span></label>
+        </div>
+        <div class="range">
+          <input type="range" id="maxPrice" min="0" max="200000" step="500" value="200000">
+          <label>Max: ₹<span id="maxPriceLabel">200000</span></label>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h4>Rating</h4>
+        <div class="radio-group">
+          <label><input type="radio" name="rating" value="0" checked> Any</label>
+          <label><input type="radio" name="rating" value="4"> 4★ & above</label>
+          <label><input type="radio" name="rating" value="4.5"> 4.5★ & above</label>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h4>Brand</h4>
+        <div id="brandList" class="check-list">
+          <!-- brands injected -->
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h4>Sort By</h4>
+        <select id="sortSelect">
+          <option value="relevance">Relevance</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+          <option value="rating_desc">Rating</option>
+          <option value="discount_desc">Discount</option>
+        </select>
+      </div>
+    </aside>
+
+    <section class="products">
+      <div class="products-head">
+        <h2 id="productsTitle">All Products</h2>
+        <div class="results-meta">
+          <span id="resultsCount">0 results</span>
+        </div>
+      </div>
+      <div class="grid" id="productGrid">
+        <!-- Product cards injected here -->
+      </div>
+      <div class="pagination" id="pagination"></div>
+    </section>
+  </main>
+
+  <!-- Product Modal -->
+  <div class="modal" id="productModal" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <div class="modal-body" id="modalBody">
+        <!-- Injected -->
+      </div>
+    </div>
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="closeCart" aria-label="Close Cart">×</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- items -->
+    </div>
+    <div class="cart-summary" id="cartSummary">
+      <div class="row">
+        <span>Subtotal</span><strong id="cartSubtotal">₹0</strong>
+      </div>
+      <div class="row">
+        <span>Discount</span><strong id="cartDiscount">−₹0</strong>
+      </div>
+      <div class="row total">
+        <span>Total</span><strong id="cartTotal">₹0</strong>
+      </div>
+      <button id="checkoutBtn" class="primary">Proceed to Checkout</button>
+    </div>
+  </div>
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>About MJKart</h4>
+        <p>We bring you the best products at the best prices — inspired by the polish of Amazon and Flipkart, crafted with love.</p>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Payments</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Cancellation & Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Social</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X/Twitter</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Subscribe</h4>
+        <div class="subscribe">
+          <input type="email" placeholder="Enter your email" aria-label="Email">
+          <button class="primary">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div class="container copy">
+      © <span id="year"></span> MJKart. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
